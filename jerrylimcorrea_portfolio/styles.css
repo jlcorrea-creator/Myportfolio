@@ -6,8 +6,8 @@ body {
   
 }
 /* default hover effect */
-a:hover {
-  color:#8e02f7; }
+a:hover { animation: glow 1s ease-in-out infinite alternate;
+  color:#0264f7; }
 .nav {
   text-orientation: sideways-right;
   padding: 2px;
@@ -22,7 +22,7 @@ a:hover {
 p { text-align:center;
   font-size: 1.50rem;
   max-width: 100ch;
-}.glow, h1,h2{
+}.glow, h1,h2 {
   animation: glow 4s ease-in-out infinite alternate;
 }
 @keyframes glow {
