@@ -1,45 +1,28 @@
-body {
-    font-family: system-ui,'Segoe UI','Open Sans';
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
-    width: 90%;
-    margin: auto;
-
-}@media (min-width: 600px) {
-  body {
-      width: 80%;
-  }
-
-  .main-content {
-      padding: 2rem;
-  }
-} @media (min-width: 1024px) {
-  body {  font-family: system-ui,'Segoe UI','Open Sans';
+body {  font-family: system-ui,'Segoe UI','Open Sans';
     font-size: 2rem;
     font-weight: 800; 
     line-height: 1.5; border: 64px solid #0c0c3d;
-  
-}}
+    text-align: center;
+}
 /* default hover effect */
 a:hover { animation: glow 1s ease-in-out infinite alternate;
   color:#0264f7; }
 .nav {
-  text-orientation: sideways-right;
-  padding: 2px;
+  text-orientation:initial;
+  padding:4px;
   background-color: #0c0c3d;
-  border-bottom: 4px solid #2c2ffa;
+  border-bottom: 4px solid #2c2ffa; 
+  border-top: 4px solid #2c2ffa;
 }
   /* when hover is supported */
- h1,h2{text-align:center; font-weight: 800;
+ h1,h2 {text-align:center; font-weight: 800;
    line-height: 6;
     color:#f78e02;}
 
 p { text-align:center;
   font-size: 1.50rem;
   max-width: 100ch;
-}.glow, h1,h2 {
+}.glow, h1,h2{
   animation: glow 4s ease-in-out infinite alternate;
 }
 @keyframes glow {
