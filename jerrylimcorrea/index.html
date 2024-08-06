@@ -21,45 +21,66 @@
         background-color:#020153;  line-height: 70vh;  
         display: flow-root;
   } </style>
-    <audio id="audioPlayer" src="ambience.mp3" preload="auto"></audio>
+
+    </script>
+    <audio id="audioPlayer1" src="ambience.mp3" preload="auto"></audio>
+    <audio id="audioPlayer2" src="background-loop.mp3" preload="auto"></audio>
     <a id="playLink">Hover to play</a>
     <script>
-        const audio = document.getElementById('audioPlayer');
-        const playLink = document.getElementById('playLink');
+       // References to audio elements
+const audioPlayer1 = document.getElementById('audioPlayer1');
+const audioPlayer2 = document.getElementById('audioPlayer2');
+const playLink = document.getElementById('playLink');
 
-        const hoverText = 'Welcome!';
-        const typingText = 'Hi, I am Jerry... ';
-    
-    playLink.textContent = hoverText;
+const hoverText = 'Welcome!';
+const typingText = 'Hi, I am Jerry... ';
 
-    let isTyping = false;
-    function typeText(element, text, speed) {
-        let i = 0;
-        element.textContent = '';
-        const intervalId = setInterval(() => {
-            if (i < text.length) {
-                element.textContent += text.charAt(i);
-                i++;
-            } else {
-                clearInterval(intervalId);
-                isTyping = false;
-            }
-        }, speed);
-    }
-    playLink.addEventListener('mouseover', () => {
-        if (audio.paused) {
-            audio.play();
-            if (!isTyping) {
-                isTyping = true;
-                typeText(playLink, typingText, 100);
-            }
+playLink.textContent = hoverText;
+
+let isTyping = false;
+function typeText(element, text, speed) {
+    let i = 0;
+    element.textContent = '';
+    const intervalId = setInterval(() => {
+        if (i < text.length) {
+            element.textContent += text.charAt(i);
+            i++;
+        } else {
+            clearInterval(intervalId);
+            isTyping = false;
         }
-    });
-    audio.addEventListener('ended', () => {
-        playLink.textContent = hoverText;
-        isTyping = false;
-    });
+    }, speed);
+}
+
+playLink.addEventListener('mouseover', () => {
+    if (audioPlayer1.paused) {
+        audioPlayer1.play();
+        if (!isTyping) {
+            isTyping = true;
+            typeText(playLink, typingText, 100);
+        }
+    }
+});
+
+// Event listener for the end of the first audio
+audioPlayer1.addEventListener('ended', () => {
+    audioPlayer2.play(); // Start second audio
+    audioPlayer2.loop = true; // Loop second audio
+    playLink.textContent = hoverText;
+    isTyping = false;
+});
+
+// No action needed for audioPlayer2's ended event because it loops
+
+
+        // Modified event listener to handle playback of the second audio
+       
+
+        audioPlayer2.addEventListener('ended', () => {
+            // No action needed, since audioPlayer2 is set to loop
+        });
     </script>
+    
         <!-- START NAV -->
     <div id="myDIV" class="myDIV">
     <nav id="navbar" class="nav"
