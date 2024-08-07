@@ -27,7 +27,6 @@
     <audio id="audioPlayer2" src="ambience.mp3" preload="auto"></audio>
     <a id="playLink">Hover to play</a>
     <script>
-       // References to audio elements
 const audioPlayer1 = document.getElementById('audioPlayer1');
 const audioPlayer2 = document.getElementById('audioPlayer2');
 const playLink = document.getElementById('playLink');
@@ -62,22 +61,13 @@ playLink.addEventListener('mouseover', () => {
     }
 });
 
-// Event listener for the end of the first audio
 audioPlayer1.addEventListener('ended', () => {
-    audioPlayer2.play(); // Start second audio
-    audioPlayer2.loop = true; // Loop second audio
+    audioPlayer2.play();
+    audioPlayer2.loop = true;
     playLink.textContent = hoverText;
     isTyping = false;
 });
-
-// No action needed for audioPlayer2's ended event because it loops
-
-
-        // Modified event listener to handle playback of the second audio
-       
-
         audioPlayer2.addEventListener('ended', () => {
-            // No action needed, since audioPlayer2 is set to loop
         });
     </script>
     
