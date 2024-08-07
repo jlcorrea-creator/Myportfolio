@@ -37,6 +37,7 @@ const typingText = 'Hi, I am Jerry... ';
 playLink.textContent = hoverText;
 
 let isTyping = false;
+
 function typeText(element, text, speed) {
     let i = 0;
     element.textContent = '';
@@ -53,7 +54,9 @@ function typeText(element, text, speed) {
 
 playLink.addEventListener('mouseover', () => {
     if (audioPlayer1.paused) {
-        audioPlayer1.play();
+        audioPlayer1.play().catch(error => {
+            console.error( 'Error playing audio:', error);
+        });
         if (!isTyping) {
             isTyping = true;
             typeText(playLink, typingText, 100);
@@ -62,12 +65,15 @@ playLink.addEventListener('mouseover', () => {
 });
 
 audioPlayer1.addEventListener('ended', () => {
-    audioPlayer2.play();
+    audioPlayer2.play().catch(error =>{
+    console.error('Error playing audio:', error);
+});
     audioPlayer2.loop = true;
     playLink.textContent = hoverText;
     isTyping = false;
 });
-        audioPlayer2.addEventListener('ended', () => {
+
+audioPlayer2.addEventListener('ended', () => {
         });
     </script>
     
